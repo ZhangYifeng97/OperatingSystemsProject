@@ -6,7 +6,7 @@ import csv
 m = mmap.mmap(os.open('../csv/output_2/R_sorted.csv',os.O_RDWR), 0)
 m.readline()
 start = time.clock()
-file = csv.reader(open('../csv/output_2/R_sorted.csv',r))
+file = csv.reader(open('../csv/output_2/R_sorted.csv','r'))
 next(file)
 header = "Timestamp,Response,IOType,LUN,Offset,Size\n"
 open("../csv/output_2/R.csv","w+").write(header)

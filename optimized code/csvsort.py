@@ -9,6 +9,7 @@ file_output="../csv/output_2/R_sorted.csv"
 df = pd.read_csv(file_input,  dtype = {"Size": str, "Timestamp": str, "Response": str})
 df["copy"] = df["Timestamp"]
 df.to_csv(file_output, index = 0)
+del df
 
 df = pd.read_csv(file_output,  dtype = {"Size": int, "Timestamp": str, "Response": str})
 df = df.sort_values(by=["IOType", "Size", "copy"])

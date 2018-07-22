@@ -8,14 +8,14 @@ start = time.clock()
 
 def counting(mode):
     l = []
-    r_file = csv.reader(open("../csv/output/{}.csv".format(mode), 'r'))
+    r_file = csv.reader(open("../csv/output_2/{}.csv".format(mode), 'r'))
     # insert a blank row
     next(r_file)
     current_size = 0
     for i in r_file:
         current_size = i[5]
         break
-    counter = 0
+    counter = 1
     for row in r_file:
         if row[5] == current_size:
             counter += 1
@@ -24,11 +24,10 @@ def counting(mode):
             counter = 1
             current_size = row[5]
     # process the last size, which would be omitted in the for loop
-    csv.writer(open("../csv/output/{}.csv".format(mode), 'a')).writerow([])
+    csv.writer(open("../csv/output_2/{}.csv".format(mode), 'a')).writerow([])
     string = "".join(l)
     open("../csv/output_2/{}.csv".format(mode), 'a').write(string)
-    print(current_size)
-    csv.writer(open("../csv/output/{}.csv".format(mode), 'a')).writerow([counter, current_size])
+    csv.writer(open("../csv/output_2/{}.csv".format(mode), 'a')).writerow([counter, current_size])
 
 counting('R')
 counting('W')
